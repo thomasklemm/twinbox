@@ -1,4 +1,10 @@
 Twinbox::Application.routes.draw do
+  ##
+  # Users
+  devise_for :users,
+    path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
+    path: '' # removes /users/ path prefix
+
   # Sidekiq Web Interface
   # TODO: Authenticate to access
   require 'sidekiq/web'
