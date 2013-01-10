@@ -4,12 +4,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## User details
       t.text :first_name, null: false
       t.text :last_name, null: false
-      t.text :company, null: false
 
-      ## FriendlyId
-      t.text :slug
+      ## Company
+      t.belongs_to :company
 
-      ## Database authenticatable
       t.text :email,              :null => false, :default => ""
       t.text :encrypted_password, :null => false, :default => ""
 
@@ -41,12 +39,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
-
       t.timestamps
     end
-
-    # FriendlyId indexes
-    add_index :users, :slug, unique: true
 
     # Devise indexes
     add_index :users, :email,                :unique => true

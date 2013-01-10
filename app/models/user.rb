@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  company                :text             not null
+#  company_id             :integer
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :text
 #  confirmed_at           :datetime
@@ -20,7 +20,6 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :text
 #  sign_in_count          :integer          default(0)
-#  slug                   :text
 #  unconfirmed_email      :text
 #  updated_at             :datetime         not null
 #
@@ -29,7 +28,6 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_slug                  (slug) UNIQUE
 #
 
 class User < ActiveRecord::Base
@@ -43,12 +41,13 @@ class User < ActiveRecord::Base
     :validatable,
     :confirmable
 
-  # FriendlyId
-  extend FriendlyId
-  friendly_id :company, use: :slugged
-
   # Validations
-  validates :first_name, :last_name, :company, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  # Company
+  belongs_to :company
+  accepts_nested_attributes_for :company
 
   # Virtual attributes
   def full_name
@@ -56,5 +55,5 @@ class User < ActiveRecord::Base
   end
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :company
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :company_attributes
 end
