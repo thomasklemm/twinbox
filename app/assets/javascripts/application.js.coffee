@@ -1,7 +1,6 @@
 # application.js.coffee
 # insert after jQuery
 #
-//= require list
 //= require jquery_ujs
 
 # Twinbox

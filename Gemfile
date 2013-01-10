@@ -21,6 +21,9 @@ gem 'high_voltage'
 # Slim (Templating)
 gem 'slim-rails'
 
+# Twitter (Twitter API Client)
+gem 'twitter'
+
 # Friendly Id (Human-Readable IDs for ActiveRecord Models)
 gem 'friendly_id'
 
