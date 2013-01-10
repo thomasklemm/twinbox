@@ -24,6 +24,9 @@ gem 'slim-rails'
 # Twitter (Twitter API Client)
 gem 'twitter'
 
+# TweetStream (Twitter Streaming API Client)
+gem 'tweetstream'
+
 # Friendly Id (Human-Readable IDs for ActiveRecord Models)
 gem 'friendly_id'
 
