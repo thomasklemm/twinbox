@@ -15,12 +15,9 @@ ActiveRecord::Schema.define(:version => 20130110155716) do
 
   create_table "companies", :force => true do |t|
     t.text     "name",       :null => false
-    t.text     "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "companies", ["slug"], :name => "index_companies_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.text     "first_name",                             :null => false
