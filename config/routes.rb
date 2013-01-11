@@ -3,7 +3,14 @@ Twinbox::Application.routes.draw do
   # Users
   devise_for :users,
     path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
-    path: '' # removes /users/ path prefix
+    path: '' # removes '/users/' path prefix
+
+  ##
+  # Omniauth to authorize Twitter accounts
+  match 'auth/twitter/setup' => 'omniauth#setup'
+  match 'auth/twitter/callback' => 'omniauth#callback'
+  match 'auth/failure' => redirect('/')
+
 
   # Sidekiq Web Interface
   # TODO: Authenticate to access

@@ -11,13 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110155716) do
+ActiveRecord::Schema.define(:version => 20130111090534) do
 
   create_table "companies", :force => true do |t|
     t.text     "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "twitter_accounts", :force => true do |t|
+    t.text     "login"
+    t.text     "uid"
+    t.text     "token"
+    t.text     "token_secret"
+    t.boolean  "read_token",   :default => false
+    t.boolean  "write_token",  :default => false
+    t.integer  "company_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "twitter_accounts", ["company_id"], :name => "index_twitter_accounts_on_company_id"
 
   create_table "users", :force => true do |t|
     t.text     "first_name",                             :null => false
