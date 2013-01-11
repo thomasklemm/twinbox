@@ -23,3 +23,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Debug view (experiments that should never be found on the server!)
+/app/views/pages/debug.html.slim

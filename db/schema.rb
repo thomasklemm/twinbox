@@ -24,11 +24,9 @@ ActiveRecord::Schema.define(:version => 20130111090534) do
     t.text     "uid"
     t.text     "token"
     t.text     "token_secret"
-    t.boolean  "read_token",   :default => false
-    t.boolean  "write_token",  :default => false
     t.integer  "company_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "twitter_accounts", ["company_id"], :name => "index_twitter_accounts_on_company_id"

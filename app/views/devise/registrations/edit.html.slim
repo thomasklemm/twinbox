@@ -30,9 +30,12 @@ h2 Twitter Accounts
 - twitter_accounts.each do |t|
   .twitter-account
     = debug t
-= link_to 'Add an account (Read only)', '/auth/twitter?force_login=true'
+
+= link_to 'Add an account (Read)', '/auth/twitter?force_login=true&x_auth_access_type=read'
 br
-= link_to 'Add an account (Read and write)', '/auth/twitter?force_login=true&permissions=write&x_auth_access_type=read'
+= link_to 'Add an account (Read, write)', '/auth/twitter?force_login=true&x_auth_access_type=write'
+br
+= link_to 'Add an account (Read, write, direct messages)', '/auth/twitter?force_login=true&use_authorize=true'
 
 h3 Cancel my account
 p
