@@ -5,6 +5,13 @@ h3 Twitter accounts
   - for account in @twitter_accounts
     .account
       b.login @#{ account.login }
+      | &nbsp;
+      - if account.track_mentions?
+        ' Tracking @mentions.
+        = link_to 'Stop', untrack_mentions_twitter_account_path(account), method: :post, confirm: 'Are you sure?'
+      - else
+        ' Not tracking @mentions.
+        = link_to 'Start', track_mentions_twitter_account_path(account), method: :post
 
 h3 Add a new account <small>...or change the access level for an existing one</small>
 = link_to 'Add an account (Read)', '/auth/twitter?force_login=true&x_auth_access_type=read'

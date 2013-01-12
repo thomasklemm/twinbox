@@ -13,7 +13,11 @@ Twinbox::Application.routes.draw do
   # Settings
   scope 'settings' do
     # Twitter accounts
-    resources :twitter_accounts, only: :index
+    resources :twitter_accounts, only: :index do
+      post 'track_mentions', on: :member
+      post 'untrack_mentions', on: :member
+    end
+
     # Queries
     resources :queries, only: [:index, :create, :destroy]
   end
