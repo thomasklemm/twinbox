@@ -8,9 +8,9 @@
 #  last_performed_at  :datetime
 #  last_scheduled_at  :datetime
 #  max_tweet_id       :integer
+#  query_type         :text
 #  term               :text
 #  twitter_account_id :integer
-#  type               :text
 #  updated_at         :datetime         not null
 #
 # Indexes
@@ -22,5 +22,10 @@
 class Query < ActiveRecord::Base
   belongs_to :company
   belongs_to :twitter_account
+
+  # QueryTypes
+  #  available :mentions, :search
+  classy_enum_attr :query_type
+
   attr_accessible :query_type, :term, :last_performed_at, :last_scheduled_at, :max_tweet_id
 end

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130112042446) do
   end
 
   create_table "queries", :force => true do |t|
-    t.text     "type"
+    t.text     "query_type"
     t.text     "term"
     t.integer  "company_id"
     t.integer  "twitter_account_id"

@@ -47,9 +47,11 @@ if(Rails.env.development?)
     Rake::Task['annotate'].invoke
   end
 
-  Rake::Task['db:rollback'].enhance do
-    Rake::Task['annotate'].invoke
-  end
+  # Running after rollback raises errors
+  #  when a table is dropped
+  # Rake::Task['db:rollback'].enhance do
+  #   Rake::Task['annotate'].invoke
+  # end
 end
 
 
