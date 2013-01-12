@@ -18,5 +18,6 @@
 
 class TwitterAccount < ActiveRecord::Base
   belongs_to :company
+  has_many :queries, dependent: :destroy
   attr_accessible :uid, :login, :token, :token_secret
 end
