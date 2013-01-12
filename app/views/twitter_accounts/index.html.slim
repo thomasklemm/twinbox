@@ -1,0 +1,17 @@
+h1 TwitterAccounts
+
+h3 Twitter accounts
+.accounts
+  - for account in @twitter_accounts
+    .account
+      b.login @#{ account.login }
+
+h3 Add a new account <small>...or change the access level for an existing one</small>
+= link_to 'Add an account (Read)', '/auth/twitter?force_login=true&x_auth_access_type=read'
+br
+= link_to 'Add an account (Read, write)', '/auth/twitter?force_login=true&x_auth_access_type=write'
+br
+= link_to 'Add an account (Read, write, direct messages)', '/auth/twitter?force_login=true&use_authorize=true'
+
+h3 Revoking access
+p Here's how to revoke access if you like to...

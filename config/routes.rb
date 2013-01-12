@@ -10,6 +10,10 @@ Twinbox::Application.routes.draw do
   match 'auth/twitter/callback' => 'omniauth#twitter'
   match 'auth/failure'          => 'omniauth#failure'
 
+  # Settings # maybe use namespacing
+  get 'settings/twitter_accounts' => 'twitter_accounts#index', as: :twitter_accounts
+  get 'settings/queries' => 'queries#index' # maybe namespaced resource
+
   # Sidekiq Web Interface
   #  TODO: Authenticate to access
   require 'sidekiq/web'
