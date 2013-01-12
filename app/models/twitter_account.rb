@@ -18,5 +18,19 @@
 
 class TwitterAccount < ActiveRecord::Base
   belongs_to :company
+  has_many :queries, dependent: :destroy
+
+  def track_mentions?
+    queries.any?
+  end
+
+  def track_mentions!
+    queries.where(query_type: :mentions).first_or_create!
+  end
+
+  def untrack_mentions!
+    queries.where(query_type: :mentions).find_each(&:destroy)
+  end
+
   attr_accessible :uid, :login, :token, :token_secret
 end

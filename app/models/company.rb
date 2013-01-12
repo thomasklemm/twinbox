@@ -12,11 +12,9 @@ class Company < ActiveRecord::Base
   # Validations
   validates :name, presence: true
 
-  # Employees
-  has_many :users
-
-  # Twitter Accounts
-  has_many :twitter_accounts
+  has_many :users # Employees
+  has_many :twitter_accounts, dependent: :destroy
+  has_many :queries, dependent: :destroy
 
   # Create or update a Twitter account from omniauth
   def create_or_update_twitter_account(auth)

@@ -7,12 +7,12 @@ class OmniauthController < ApplicationController
     current_user.company.create_or_update_twitter_account(auth)
 
     flash.notice = 'Authorized Twitter account successfully.'
-    redirect_to edit_user_registration_path
+    redirect_to twitter_accounts_path
   end
 
   # Handle failed omniauth authorization requests
   def failure
     flash.alert = 'Failed to authorize Twitter account.'
-    redirect_to edit_user_registration_url
+    redirect_to twitter_accounts_url
   end
 end
