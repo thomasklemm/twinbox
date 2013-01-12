@@ -58,6 +58,9 @@ gem 'figaro'
 # New Relic (Server Monitoring)
 gem 'newrelic_rpm'
 
+# Classy Enum (Class-based Enumerations)
+gem 'classy_enum'
+
 # Closure Tree (Nesting Structures)
 # gem 'closure_tree'
 

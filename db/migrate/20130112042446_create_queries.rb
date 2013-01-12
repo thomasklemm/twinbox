@@ -1,7 +1,7 @@
 class CreateQueries < ActiveRecord::Migration
   def change
     create_table :queries do |t|
-      t.text :version
+      t.text :query_type
       t.text :term
       t.belongs_to :company
       t.belongs_to :twitter_account
