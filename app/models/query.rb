@@ -8,6 +8,7 @@
 #  last_performed_at  :datetime
 #  last_scheduled_at  :datetime
 #  max_tweet_id       :integer
+#  term               :text
 #  twitter_account_id :integer
 #  type               :text
 #  updated_at         :datetime         not null
@@ -21,5 +22,5 @@
 class Query < ActiveRecord::Base
   belongs_to :company
   belongs_to :twitter_account
-  attr_accessible :type, :last_performed_at, :last_scheduled_at, :max_tweet_id
+  attr_accessible :version, :term, :last_performed_at, :last_scheduled_at, :max_tweet_id
 end

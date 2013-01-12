@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130112042446) do
 
   create_table "queries", :force => true do |t|
     t.text     "type"
+    t.text     "term"
     t.integer  "company_id"
     t.integer  "twitter_account_id"
     t.datetime "last_scheduled_at"

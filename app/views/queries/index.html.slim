@@ -1,0 +1,15 @@
+h1 Queries
+
+h3 Current queries
+.queries
+  - for query in @queries
+    .query
+      span.term = query.term
+      | &nbsp;
+      = link_to 'Destroy', query, method: :delete, confirm: 'Are you sure?'
+
+h3 Add a new query
+= form_for @new_query do |f|
+  = f.text_field :term, autocomplete: 'off'
+  br
+  = f.submit
