@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(:version => 20130112042446) do
     t.text     "term"
     t.integer  "company_id"
     t.integer  "twitter_account_id"
-    t.datetime "last_scheduled_at"
-    t.datetime "last_performed_at"
     t.integer  "max_tweet_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

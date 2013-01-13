@@ -3,8 +3,7 @@
 ---
 :verbose: false
 :namespace: sidekiq
-:concurrency: 25
+:concurrency: 50
 :queues:
-  - [often, 7]
-  - [default, 5]
-  - [seldom, 3]
+  - [scheduling, 100]
+  - [default, 1]
