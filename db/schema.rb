@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112042446) do
+ActiveRecord::Schema.define(:version => 20130113215119) do
 
   create_table "companies", :force => true do |t|
     t.text     "name",       :null => false
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20130112042446) do
 
   add_index "queries", ["company_id"], :name => "index_queries_on_company_id"
   add_index "queries", ["twitter_account_id"], :name => "index_queries_on_twitter_account_id"
+
+  create_table "tweets", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "tweet_id"
+    t.text     "text"
+    t.text     "user_screen_name"
+    t.text     "user_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "tweets", ["company_id"], :name => "index_tweets_on_company_id"
 
   create_table "twitter_accounts", :force => true do |t|
     t.text     "login"
