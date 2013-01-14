@@ -119,9 +119,9 @@ p
 // flash messages
 .flash-message
   padding: 0.4rem 0 0.35rem 1rem
-  margin-bottom: 1.5rem
+  margin: 0.25rem 0
   border-radius: $radius
-  background: #e9e9e9
+  background: rgba($primary, 0.2)
   @include box-shadow(0 2px 3px black(0.22))
 
   cursor: pointer // close on click
@@ -166,6 +166,12 @@ p
         border-right: none
         padding-right: 0
 
+// secondary nav
+.secondary-nav
+  margin-top: 1rem
+
+  border-right: 1px solid #ccc
+
 // landing page
 .landing
   .name
@@ -179,4 +185,5 @@ p
     list-style: square
     li
       margin-left: 2rem
+
 

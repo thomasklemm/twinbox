@@ -1,25 +1,36 @@
-h1 Queries
+= render 'signed_in_secondary_navigation'
 
-h3 Current queries
-.queries
-  - for query in @queries
-    .query
-      span.term = query.term
-      | &nbsp;
-      = link_to 'Destroy', query, method: :delete, confirm: 'Are you sure?'
+.ten.columns
+  h3 Your queries
+  .queries
+    - if @queries.present?
+      table
+        - for query in @queries
+          tr
+            td: b = query.term
+            td = link_to '<i class="icon-remove-circle" style="font-size: 0.9rem; margin-left: 0.5rem"></i>Remove'.html_safe, query, method: :delete, confirm: 'Are you sure?'
+    - else
+      .none-yet None yet.
 
-h3 Add a new query
-= form_for @new_query do |f|
-  = f.text_field :term, autocomplete: 'off', autofocus: true
-  br
-  = f.submit
+  .space-one
 
-h3 What results would I get with which query?
-b = link_to 'Try a Twitter search (with operator help, too)', 'https://twitter.com/search'
+  h3 Add a new query
+  .space-half
+  = form_for @new_query do |f|
+    = f.text_field :term, autocomplete: 'off', autofocus: true
+    .space-half
+    = f.submit(class: 'button')
 
-h3 Learn about search operators
-= image_tag('misc/twitter_search_operators.png')
-.source
-  ' Source:
-  = link_to 'Using the Twitter Search API (Twitter Docs)', 'https://dev.twitter.com/docs/using-search'
+  .space-two
+
+  h4 What results would I get with which query?
+  b = link_to 'Try a Twitter search (with operator help, too)', 'https://twitter.com/search'
+
+  .space-one
+
+  h4 Learn about search operators
+  = image_tag('misc/twitter_search_operators.png')
+  .source
+    ' Source:
+    = link_to 'Using the Twitter Search API (Twitter Docs)', 'https://dev.twitter.com/docs/using-search'
 
