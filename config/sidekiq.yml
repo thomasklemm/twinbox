@@ -1,4 +1,4 @@
-# Sample configuration file for Sidekiq.
+# Configuration file for Sidekiq.
 # Options here can still be overridden by cmd line args.
 ---
 :verbose: false

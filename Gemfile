@@ -67,8 +67,8 @@ gem 'classy_enum'
 # Production Gems
 group :production do
   # Memcached on Heroku
-  # gem 'memcachier'
-  # gem 'dalli'
+  gem 'memcachier'
+  gem 'dalli'
 end
 
 # Gems used only for assets and not required
