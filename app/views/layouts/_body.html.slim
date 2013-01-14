@@ -1,18 +1,7 @@
 / layouts/_body
 #root
-  .container
-    span
-      = link_to 'Home', root_path
-      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      = link_to 'Pricing', static_path(id: :pricing)
-      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      = link_to 'Signup', new_user_registration_path
-
-    span style='float: right'
-      - if user_signed_in?
-        = link_to 'Logout', destroy_user_session_path
-      - else
-        = link_to 'Login', new_user_session_path
+  / primary navigation
+  = render 'primary_navigation'
 
   / any flash messages
   = render 'flash_messages'

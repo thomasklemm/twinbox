@@ -9,9 +9,10 @@ class Scheduler
     enqueue_queries
   end
 
-  # Schedule next run of scheduler
+  # Run scheduler once per minute,
+  # schedule next run
   def schedule_next_run
-    Scheduler.perform_in(10.seconds)
+    Scheduler.perform_in(1.minute)
   end
 
   # Find queries that have not been run in the last
