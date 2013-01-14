@@ -22,6 +22,9 @@ Twinbox::Application.routes.draw do
     resources :queries, only: [:index, :create, :destroy]
   end
 
+  # Tweets
+  resources :tweets, only: [:index, :destroy]
+
   # Sidekiq Web Interface
   #  TODO: Authenticate to access
   require 'sidekiq/web'

@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20130113215119) do
     t.text     "term"
     t.integer  "company_id"
     t.integer  "twitter_account_id"
-    t.integer  "max_tweet_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "max_tweet_id",       :limit => 8
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "queries", ["company_id"], :name => "index_queries_on_company_id"
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(:version => 20130113215119) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "company_id"
-    t.integer  "tweet_id"
+    t.integer  "tweet_id",         :limit => 8
     t.text     "text"
     t.text     "user_screen_name"
     t.text     "user_name"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.text     "user_image_url"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "tweets", ["company_id"], :name => "index_tweets_on_company_id"

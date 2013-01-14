@@ -39,6 +39,10 @@ class Query < ActiveRecord::Base
     @client ||= Twitter::Client.new(oauth_token: twitter_account.token, oauth_token_secret: twitter_account.token_secret)
   end
 
+  def max_tweet_id
+    self[:max_tweet_id] || 0
+  end
+
   # QueryTypes
   #  available query_types: :mentions, :search
   classy_enum_attr :query_type

@@ -186,4 +186,29 @@ p
     li
       margin-left: 2rem
 
+// tweets
+.tweets .tweet
+  @include span-columns(12)
+  margin-bottom: 1rem
+  .details
+    @include span-columns(11)
+    .user-image
+      float: left
+      border-radius: 10px
+      margin-right: 0.35rem
+    .user-name
+      float: left
+      font-weight: 600
+    .user-screen-name
+      margin-left: 0.5rem
+      font-size: 0.9375rem
+      color: #777
+    .text
+      display: block
+  .destroy-tweet
+    @include span-columns(1)
+    background: rgba($primary, 0.2)
+    height: 42px
+    line-height: 42px
+    text-align: center
 
