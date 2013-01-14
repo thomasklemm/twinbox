@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_filter :find_company
 
   def index
-    @tweets = @company.tweets.order('created_at DESC')
+    @tweets = @company.tweets.order('created_at DESC').limit(100)
   end
 
   def destroy
