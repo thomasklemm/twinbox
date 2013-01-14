@@ -27,7 +27,7 @@ namespace :production do
 
   desc 'Open a console to production app'
   task :console do
-    puts   'Open a console to PRODUCTION app'
+    puts   'Opening a console to PRODUCTION app...'
     system 'heroku run console --remote production'
   end
 
