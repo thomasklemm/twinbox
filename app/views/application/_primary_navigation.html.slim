@@ -1,0 +1,20 @@
+/ application/_primary_navigation
+.primary-nav.container
+  - if user_signed_in?
+    / user signed in
+    ul.left
+      li: b = link_to 'Your Twinbox', tweets_path
+      li = link_to 'Settings', twitter_accounts_path
+
+    ul.right
+      li #{ current_user.full_name }
+      li = link_to 'Logout', destroy_user_session_path
+
+  - else
+    / no user signed in
+    ul.left
+      li = link_to 'Home & Pricing', root_path
+      li = link_to 'Signup', new_user_registration_path
+
+    span.right
+      = link_to 'Login', new_user_session_path

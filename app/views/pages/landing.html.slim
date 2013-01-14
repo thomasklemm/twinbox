@@ -1,5 +1,28 @@
-h1 Twinbox
-p Professional Twitter support for businesses
+.landing.container
+  h2.name Twinbox
+  .slogan Provide great Twitter support for your Business.
 
-/ Signup
-= link_to 'Signup', new_user_registration_path
+  ul.features
+    b Features
+    li Multiple team members
+    li Multiple twitter accounts
+    li Track your @mentions
+    li Track keywords
+
+  ul.pricing
+    b Pricing
+    li
+      b Bird plan &rarr;&nbsp;
+      span
+        b $249
+        ' /month
+      div Unlimited team members
+    li
+      b Egg plan &rarr;&nbsp;
+      span
+        b $129
+        ' /month
+      div Up to three team members
+
+  / Signup
+  = link_to 'Signup', new_user_registration_path, class: 'button'

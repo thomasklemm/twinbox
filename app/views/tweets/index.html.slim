@@ -1,0 +1,22 @@
+.two.columns
+  .secondary-nav
+    ul
+      b Twinbox
+      li = link_to '1) Incoming', 'javascript:'
+      li = link_to '2) Take Action', 'javascript:'
+      li = link_to '3) Solved', 'javascript:'
+      li = link_to '4) Appreciated', 'javascript:'
+
+.ten.columns
+  h3 Incoming tweets (#{ @tweets.size })
+  .tweets
+    - for tweet in @tweets
+      .tweet
+        .details
+          = image_tag(tweet.user_image_url, class: 'user-image')
+          span.user-name = tweet.user_name
+          span.user-screen-name @#{ tweet.user_screen_name }
+          span.text = tweet.text
+        = link_to '<i class="icon-ok"></i>'.html_safe, tweet, method: :delete, remote: true, class: 'destroy-tweet'
+
+

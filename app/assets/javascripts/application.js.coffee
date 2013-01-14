@@ -13,3 +13,9 @@ $ ->
 
   $('.flash-message').click ->
     $(this).fadeOut()
+
+
+  ##
+  # Tweets
+  $('.destroy-tweet').live 'click', () ->
+    $(this).parent().slideUp(150)
