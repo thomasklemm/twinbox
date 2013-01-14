@@ -3,7 +3,7 @@ Twinbox::Application.configure do
 
   # Default URL Host
   #  required by Swiftype
-  Rails.application.routes.default_url_options[:host] = 'twinboxapp.com'
+  Rails.application.routes.default_url_options[:host] = 'twinbox-production.herokuapp.com'
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -58,6 +58,19 @@ Twinbox::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  ##
+  # ActionMailer
+  # Deliveries using Sendgrid
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com'
+  }
+  ActionMailer::Base.delivery_method = :smtp
 
   ##
   # Caching

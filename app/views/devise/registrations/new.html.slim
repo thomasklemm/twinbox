@@ -6,12 +6,12 @@ h2 Signup for Twinbox
     = f.fields_for :company_attributes do |cf|
       = cf.label :name, "Your company's name"
       br
-      = cf.text_field :name, autocomplete: 'off'
+      = cf.text_field :name, autocomplete: 'off', autofocus: true
 
   div
     = f.label :first_name, 'Your first name'
     br
-    = f.text_field :first_name, :autofocus => true, autocomplete: 'off'
+    = f.text_field :first_name, autocomplete: 'off'
 
   div
     = f.label :last_name, 'Your last name'
