@@ -6,6 +6,13 @@ GIT
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
 
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: d030cd99cfff57310904c5d03b709281267cf9ef
+  specs:
+    active_model_serializers (0.5.2)
+      activemodel (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -90,6 +97,10 @@ GEM
       eventmachine (~> 1.0)
       http_parser.rb (~> 0.5)
       simple_oauth (~> 0.1)
+    ember-rails (0.8.0)
+      active_model_serializers
+      execjs (>= 1.2)
+      railties (~> 3.1)
     erubis (2.7.0)
     eventmachine (1.0.0)
     excon (0.16.10)
@@ -260,6 +271,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   annotate!
   better_errors
   binding_of_caller
@@ -270,6 +282,7 @@ DEPENDENCIES
   compass-rails
   dalli
   devise
+  ember-rails
   figaro
   formtastic
   friendly_id

@@ -2,6 +2,7 @@
 # insert after jQuery
 #
 //= require jquery_ujs
+//= require ember
 
 # Twinbox
 $ ->

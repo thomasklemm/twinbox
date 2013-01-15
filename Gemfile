@@ -61,6 +61,12 @@ gem 'newrelic_rpm'
 # Classy Enum (Class-based Enumerations)
 gem 'classy_enum'
 
+# Ember (Client-side MVC Framwork)
+gem 'ember-rails'
+
+# ActiveModelSerializers (API for Ember)
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
 # Closure Tree (Nesting Structures)
 # gem 'closure_tree'
 

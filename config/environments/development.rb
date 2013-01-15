@@ -49,6 +49,9 @@ Twinbox::Application.configure do
   # Quiet Assets
   config.quiet_assets = true
 
+  # Ember
+  config.ember.variant = :development
+
   # Bullet
   # config.after_initialize do
   #   Bullet.enable = true
