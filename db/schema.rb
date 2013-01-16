@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113215119) do
+ActiveRecord::Schema.define(:version => 20130116101942) do
 
   create_table "companies", :force => true do |t|
     t.text     "name",       :null => false
@@ -58,8 +58,7 @@ ActiveRecord::Schema.define(:version => 20130113215119) do
   add_index "twitter_accounts", ["company_id"], :name => "index_twitter_accounts_on_company_id"
 
   create_table "users", :force => true do |t|
-    t.text     "first_name",                             :null => false
-    t.text     "last_name",                              :null => false
+    t.text     "name",                                   :null => false
     t.integer  "company_id"
     t.text     "email",                  :default => "", :null => false
     t.text     "encrypted_password",     :default => "", :null => false

@@ -62,10 +62,13 @@ gem 'newrelic_rpm'
 gem 'classy_enum'
 
 # Ember (Client-side MVC Framwork)
-gem 'ember-rails'
+gem 'ember-rails', github: 'emberjs/ember-rails'
 
 # ActiveModelSerializers (API for Ember)
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
+# Gravatar (Gravatar Image Tags)
+gem 'gravatar_image_tag'
 
 # Closure Tree (Nesting Structures)
 # gem 'closure_tree'

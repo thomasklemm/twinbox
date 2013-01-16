@@ -22,8 +22,11 @@ Twinbox::Application.routes.draw do
     resources :queries, only: [:index, :create, :destroy]
   end
 
-  # Tweets
-  resources :tweets
+  # API
+  scope ':api' do
+    # Tweets
+    resources :tweets
+  end
 
   # Sidekiq Web Interface
   #  TODO: Authenticate to access
@@ -35,4 +38,7 @@ Twinbox::Application.routes.draw do
 
   # Root
   root to: 'high_voltage/pages#show', id: 'landing'
+
+  # Fallback
+  match '*path' => redirect('/')
 end

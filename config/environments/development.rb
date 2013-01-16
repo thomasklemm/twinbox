@@ -49,10 +49,11 @@ Twinbox::Application.configure do
   # Quiet Assets
   config.quiet_assets = true
 
-  # Ember
+  # Use development assets for Ember
   config.ember.variant = :development
 
   # Bullet
+  # for optimizing N+1 queries and more
   # config.after_initialize do
   #   Bullet.enable = true
   #   Bullet.alert = true

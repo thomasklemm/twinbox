@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
   def create # should be done another way
     @tweet = @tweets.new(params[:tweet])
     if @tweet.save
-      render json: @tweet, status: :created, location: @tweet
+      render json: @tweet, status: :created, location: @tweet # location not present in contacts app
     else
       render json: @tweet.errors, status: :unprocessable_entity
     end

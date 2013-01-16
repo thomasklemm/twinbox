@@ -9,14 +9,9 @@ h2 Signup for Twinbox
       = cf.text_field :name, autocomplete: 'off', autofocus: true
 
   div
-    = f.label :first_name, 'Your first name'
+    = f.label :name, 'Your name'
     br
-    = f.text_field :first_name, autocomplete: 'off'
-
-  div
-    = f.label :last_name, 'Your last name'
-    br
-    = f.text_field :last_name, autocomplete: 'off'
+    = f.text_field :name, autocomplete: 'off'
 
   div
     = f.label :email, 'Your email'
