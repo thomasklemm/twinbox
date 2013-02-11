@@ -16,7 +16,7 @@
 #  index_twitter_accounts_on_company_id  (company_id)
 #
 
-class TwitterAccount < ActiveRecord::Base
+class TwitterAccount
   belongs_to :company
   has_many :queries, dependent: :destroy
 

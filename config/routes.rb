@@ -1,8 +1,8 @@
 Twinbox::Application.routes.draw do
   # Users
-  devise_for :users,
-    path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
-    path: '' # removes '/users/' path prefix
+  # devise_for :users,
+  #   path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
+  #   path: '' # removes '/users/' path prefix
 
   # Omniauth to authorize Twitter accounts
   #  There is a hidden 'auth/twitter' path too that requests can be directed to

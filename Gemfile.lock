@@ -30,7 +30,6 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     better_errors (0.3.2)
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
@@ -63,11 +62,6 @@ GEM
     cookiejar (0.3.0)
     daemons (1.1.9)
     dalli (2.6.0)
-    devise (2.2.1)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
       cookiejar
@@ -90,7 +84,6 @@ GEM
       multipart-post (~> 1.1)
     figaro (0.5.3)
       rails (~> 3.0)
-    friendly_id (4.0.9)
     fssm (0.2.9)
     hashie (1.2.0)
     heroku (2.34.0)
@@ -111,6 +104,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
+    kiqstand (1.0.0)
+      mongoid (~> 3.0)
+      moped (~> 1.2)
     launchy (2.1.2)
       addressable (~> 2.3)
     letter_opener (1.0.0)
@@ -125,6 +121,12 @@ GEM
     memcachier (0.0.2)
     method_source (0.8.1)
     mime-types (1.19)
+    mongoid (3.0.21)
+      activemodel (~> 3.1)
+      moped (~> 1.2)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.22)
+    moped (1.3.2)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     neat (1.1.0)
@@ -142,8 +144,7 @@ GEM
     omniauth-twitter (0.0.14)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    orm_adapter (0.4.0)
-    pg (0.14.1)
+    origin (1.0.11)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -243,8 +244,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    warden (1.2.1)
-      rack (>= 1.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -258,20 +257,19 @@ DEPENDENCIES
   coffee-rails
   compass-rails
   dalli
-  devise
   figaro
-  friendly_id
   heroku
   high_voltage
   httpclient
   jquery-rails
+  kiqstand
   letter_opener
   lograge
   memcachier
+  mongoid (~> 3.0.0)
   neat
   newrelic_rpm
   omniauth-twitter
-  pg
   pry-rails
   pry-remote
   puma (>= 2.0.0.b6)

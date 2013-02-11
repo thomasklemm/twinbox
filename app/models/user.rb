@@ -29,7 +29,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
+class User
   # Company
   belongs_to :company
   accepts_nested_attributes_for :company

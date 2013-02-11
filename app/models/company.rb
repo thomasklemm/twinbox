@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Company < ActiveRecord::Base
+class Company
   # Validations
   validates :name, presence: true
 

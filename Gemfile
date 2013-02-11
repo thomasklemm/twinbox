@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 # Ruby Version on Heroku
 ruby '1.9.3'
 
+# Mongoid (ORM for MongoDB)
+gem 'mongoid', '~> 3.0.0'
+
 # Puma (App Server)
 gem 'puma', '>= 2.0.0.b6'
 
 # Rails
 gem 'rails', '3.2.11'
-
-# Postgres Database Connector
-gem 'pg'
 
 # jQuery Rails (jQuery Adapter for Rails)
 gem 'jquery-rails'
@@ -27,9 +27,6 @@ gem 'twitter'
 # TweetStream (Twitter Streaming API Client)
 gem 'tweetstream'
 
-# Friendly Id (Human-Readable IDs for ActiveRecord Models)
-gem 'friendly_id'
-
 # HTTPClient (MT-Safe HTTP Client)
 gem 'httpclient'
 
@@ -37,12 +34,13 @@ gem 'httpclient'
 gem 'redcarpet'
 
 # Devise (User Authentication)
-gem 'devise'
+# gem 'devise'
 
 # Omniauth for Twitter (oAuth Authentication)
 gem 'omniauth-twitter'
 
 # Sidekiq & Sinatra (for Sidekiq Web Interface)
+gem 'kiqstand'
 gem 'sidekiq'
 gem 'sinatra', :require => false
 

@@ -17,7 +17,7 @@
 #  index_tweets_on_company_id  (company_id)
 #
 
-class Tweet < ActiveRecord::Base
+class Tweet
   belongs_to :company
 
   # Process collection of raw tweets, creating a tweet for each

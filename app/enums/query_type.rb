@@ -1,6 +1,6 @@
 ##
 # QueryTypes
-class QueryType < ClassyEnum::Base
+class QueryType
   owner :query
 
   # Enqueue query to be performed asynchronously
