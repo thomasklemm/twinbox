@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   # Redirect to tweets#index on successful login
   def after_sign_in_path_for(resource)
-    tweets_path
+    # tweets_path
   end
 end
