@@ -1,20 +1,49 @@
 class TweetsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_company
+  before_filter :find_tweets
 
   def index
-    @tweets = @company.tweets.order('created_at DESC').limit(100)
+    @tweets = @tweets.order('created_at DESC')
+    render json: @tweets
+  end
+
+  def show
+    @tweet = @tweets.find(params[:id])
+    render json: @tweet
+  end
+
+  def create # should be done another way
+    @tweet = @tweets.new(params[:tweet])
+    if @tweet.save
+      render json: @tweet, status: :created, location: @tweet # location not present in contacts app
+    else
+      render json: @tweet.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @tweet = @tweets.find(params[:id])
+    if @tweet.update_attributes(params[:tweet])
+      render json: nil, status: :ok
+    else
+      render json: @tweet.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    tweet = @company.tweets.find(params[:id])
+    tweet = @tweets.find(params[:id])
     tweet.destroy
-    render json: {}
+    render json: nil, status: :ok
   end
 
 protected
 
   def find_company
     @company = current_user.company
+  end
+
+  def find_tweets
+    @tweets = @company.tweets
   end
 end

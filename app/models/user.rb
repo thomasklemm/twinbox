@@ -11,11 +11,10 @@
 #  current_sign_in_ip     :text
 #  email                  :text             default(""), not null
 #  encrypted_password     :text             default(""), not null
-#  first_name             :text             not null
 #  id                     :integer          not null, primary key
-#  last_name              :text             not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :text
+#  name                   :text             not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :text
@@ -31,6 +30,10 @@
 #
 
 class User < ActiveRecord::Base
+  # Company
+  belongs_to :company
+  accepts_nested_attributes_for :company
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -42,18 +45,9 @@ class User < ActiveRecord::Base
     :confirmable
 
   # Validations
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-
-  # Company
-  belongs_to :company
-  accepts_nested_attributes_for :company
-
-  # Virtual attributes
-  def full_name
-    "#{ first_name } #{ last_name }"
-  end
+  validates :name, presence: true
+  validates :email, presence: true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :company_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :company_attributes
 end

@@ -21,8 +21,13 @@
 # Ignore Sass Cache
 /.sass-cache
 
+# Ignore some other cache (Maybe ember.js)
+.DS_Store
+
 # Ignore application configuration
 /config/application.yml
 
 # Debug view (experiments that should never be found on the server!)
 /app/views/pages/debug.html.slim
+
+
