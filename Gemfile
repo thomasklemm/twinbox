@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 # Mongoid (ORM for MongoDB)
+gem 'bson_ext'
 gem 'mongoid', '~> 3.0.0'
 
 # Puma (App Server)
@@ -34,7 +35,7 @@ gem 'httpclient'
 gem 'redcarpet'
 
 # Devise (User Authentication)
-# gem 'devise'
+gem 'devise'
 
 # Omniauth for Twitter (oAuth Authentication)
 gem 'omniauth-twitter'
