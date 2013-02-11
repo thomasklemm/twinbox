@@ -55,6 +55,9 @@ gem 'figaro'
 # New Relic (Server Monitoring)
 gem 'newrelic_rpm'
 
+# Lograge
+gem 'lograge'
+
 # Production Gems
 group :production do
   # Memcached on Heroku
@@ -104,10 +107,4 @@ group :development do
   # Better Errors (REPL Debug)
   gem 'better_errors'
   gem 'binding_of_caller'
-
-  # Lol DBA (Find missing indexes)
-  # gem 'lol_dba'
-
-  # Bullet (Eager Loading Notification)
-  gem 'bullet'
 end

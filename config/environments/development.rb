@@ -1,10 +1,6 @@
 Twinbox::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Default URL Host
-  # required by Swiftype
-  Rails.application.routes.default_url_options[:host] = 'twinbox.dev'
-
   # Default actiomailer url host
   # required by devise
   config.action_mailer.default_url_options = { host: 'twinbox.dev' }
@@ -31,11 +27,11 @@ Twinbox::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # config.active_record.mass_assignment_sanitizer = :strict
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
-  config.active_record.auto_explain_threshold_in_seconds = 0.5
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
   config.assets.compress = false
@@ -48,18 +44,4 @@ Twinbox::Application.configure do
 
   # Quiet Assets
   config.quiet_assets = true
-
-  # Use development assets for Ember
-  config.ember.variant = :development
-
-  # Bullet
-  # for optimizing N+1 queries and more
-  # config.after_initialize do
-  #   Bullet.enable = true
-  #   Bullet.alert = true
-  #   Bullet.bullet_logger = true
-  #   Bullet.console = true
-  #   Bullet.rails_logger = true
-  #   Bullet.disable_browser_cache = true
-  # end
 end

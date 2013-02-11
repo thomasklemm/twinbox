@@ -1,10 +1,6 @@
 Twinbox::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Default URL Host
-  #  required by Swiftype
-  Rails.application.routes.default_url_options[:host] = 'twinbox-production.herokuapp.com'
-
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -73,6 +69,12 @@ Twinbox::Application.configure do
   ActionMailer::Base.delivery_method = :smtp
 
   ##
+  # Logging
+  #
+  # Enable Lograge logging
+  config.lograge.enabled = true
+
+  ##
   # Caching
   #
   # Explicit Requires
@@ -90,7 +92,8 @@ Twinbox::Application.configure do
   config.consider_all_requests_local = false
 
   # The underlying cache store to use.
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, { :compress => true }
+
   # The session store is completely different from the normal data cache
   config.session_store = :dalli_store
 
@@ -112,6 +115,7 @@ Twinbox::Application.configure do
     [:all,   {'Cache-Control' => 'public, max-age=31536000'}],
     [:fonts, {'Access-Control-Allow-Origin' => '*'}]
   ]
-  require 'rack_headers'
+
+  require 'rack/headers'
   config.middleware.insert_before '::ActionDispatch::Static', '::Rack::Headers'
 end
