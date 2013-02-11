@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 # Puma (App Server)
-gem 'puma', '>= 2.0.0.b4'
+gem 'puma', '>= 2.0.0.b6'
 
 # Rails
 gem 'rails', '3.2.11'
@@ -49,29 +49,11 @@ gem 'sinatra', :require => false
 # Cache Digests (Watch Progress of this gem!)
 gem 'cache_digests'
 
-# Formtastic (Form Markup)
-gem 'formtastic'
-
 # Figaro (Managing credentials)
 gem 'figaro'
 
 # New Relic (Server Monitoring)
 gem 'newrelic_rpm'
-
-# Classy Enum (Class-based Enumerations)
-gem 'classy_enum'
-
-# Ember (Client-side MVC Framwork)
-gem 'ember-rails', github: 'emberjs/ember-rails'
-
-# ActiveModelSerializers (API for Ember)
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
-
-# Gravatar (Gravatar Image Tags)
-gem 'gravatar_image_tag'
-
-# Closure Tree (Nesting Structures)
-# gem 'closure_tree'
 
 # Production Gems
 group :production do
@@ -109,10 +91,6 @@ group :development do
   # gem 'taps'    # for rake production:pull_db, has outdated dependencies
   # gem 'sqlite3' # for rake production:pull_db, has outdated dependencies
 
-  # Annotate Models (Schema Info for Models and Routes)
-  # master is currently 2.6.0.beta1; gem has not received updates in a while
-  gem 'annotate', github: 'ctran/annotate_models'
-
   # Pry (IRB Replacement)
   gem 'pry-rails'
   gem 'pry-remote'
@@ -131,5 +109,5 @@ group :development do
   # gem 'lol_dba'
 
   # Bullet (Eager Loading Notification)
-  # gem 'bullet'
+  gem 'bullet'
 end
