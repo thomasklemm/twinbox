@@ -63,6 +63,9 @@ gem 'draper'
 # Twitter Text (Autolinking in tweet texts)
 gem 'twitter-text', github: 'twitter/twitter-text-rb'
 
+# Workflow (State machine)
+gem 'workflow_on_mongoid'
+
 # Production Gems
 group :production do
   # Memcached on Heroku

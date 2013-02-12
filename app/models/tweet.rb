@@ -1,5 +1,6 @@
 class Tweet
   include Mongoid::Document
+  include Workflow
 
   # Fields
   field :twitter_id,            type: Integer
@@ -7,6 +8,7 @@ class Tweet
   field :created_at,            type: DateTime
   field :in_reply_to_status_id, type: Integer
   field :in_reply_to_user_id,   type: Integer
+  field :workflow_status,       type: String # for Workflow
 
   # Author
   embeds_one :author, autobuild: true
@@ -14,6 +16,23 @@ class Tweet
   # Validations
   # TODO: Scope to account
   validates :twitter_id, uniqueness: true
+
+  # Workflow
+  workflow_column :workflow_status
+  workflow do
+    state :new do
+      event :needs_response, transitions_to: :awaiting_response
+      event :appreciate, transitions_to: :appreciated
+    end
+    state :appreciated do
+      event :needs_response, transitions_to: :awaiting_response
+    end
+    state :awaiting_response do
+      event :solve, transitions_to: :solved
+    end
+    state :solved
+  end
+  # TODO: Define event creation on state changes by naming methods like events
 
   # Create one or many tweets from twitter statuses
   def self.from_twitter(*statuses)

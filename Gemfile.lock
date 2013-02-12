@@ -268,6 +268,10 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    workflow (0.8.7)
+    workflow_on_mongoid (0.8.0.7)
+      mongoid
+      workflow (~> 0.8)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -312,3 +316,4 @@ DEPENDENCIES
   twitter
   twitter-text!
   uglifier
+  workflow_on_mongoid
