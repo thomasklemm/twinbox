@@ -1,7 +1,7 @@
 // Experiments in SASS
 //
 // Our very own variables
-$body-fonts: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+$body-fonts: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif
 $text: #393939        // primary text
 $radius: 2px          // default border radius
 
@@ -56,6 +56,9 @@ ul
 // links
 a
   text-decoration: none
+  color: $primary
+  &:link, &:hover, &:active, &:visited
+    color: $primary
 
 // Font Awesome Icons
 i

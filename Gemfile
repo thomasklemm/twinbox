@@ -57,6 +57,12 @@ gem 'newrelic_rpm'
 # Lograge
 gem 'lograge'
 
+# Draper (Decorators for objects)
+gem 'draper'
+
+# Twitter Text (Autolinking in tweet texts)
+gem 'twitter-text', github: 'twitter/twitter-text-rb'
+
 # Production Gems
 group :production do
   # Memcached on Heroku

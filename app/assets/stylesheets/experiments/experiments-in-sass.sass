@@ -1,5 +1,22 @@
 // experiments in SASS
 .tweets
-
 .tweet
-
+  @include span-columns(7)
+  margin-bottom: 1rem
+  font-size: 0.9375rem
+  line-height: 1.3
+  .profile-image
+    float: left
+    margin-right: 10px
+    margin-top: 3px
+    margin-bottom: 1rem
+    img
+      border-radius: 4px
+  .name
+    font-weight: 600
+    margin-right: 5px
+  .screen-name a
+    @include muted
+    font-size: 0.875rem
+  .text
+    display: block

@@ -1,35 +1,23 @@
 # application.js.coffee
-# insert after jQuery
+# load jQuery beforehand
+//= require jquery_ujs
 
-# Ember
-#= require vendor/handlebars
-#= require vendor/ember
-#= require vendor/ember-data
+# Prelauncher
+$ ->
+  # Flash messages
+  # Close on click
+  $('.flash-message .close').click ->
+    $(this).parent().fadeOut()
 
-# MD5
-#= require vendor/md5
+  $('.flash-message').click ->
+    $(this).fadeOut()
 
-# jQuery UJS
-#= require jquery_ujs
-
-# App
-#= require app
-
-
-
-# Twinbox
-# $ ->
-#   ##
-#   # Flash messages
-#   # Close on click
-#   $('.flash-message .close').click ->
-#     $(this).parent().fadeOut()
-
-#   $('.flash-message').click ->
-#     $(this).fadeOut()
-
-
-#   ##
-#   # Tweets
-#   $('.destroy-tweet').live 'click', () ->
-#     $(this).parent().slideUp(150)
+  # Hide form on submit
+  # and display success note
+  $('#new_subscriber').submit ->
+    $this = $(this)
+    email = $this.children('#subscriber_email').val()
+    if email?
+      if email isnt ''
+        $this.hide()
+        $('#success-note').show()

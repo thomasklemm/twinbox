@@ -1,4 +1,8 @@
 module ApplicationHelper
+  # Autolinking with Twitter text gem
+  # auto_link('my_text')
+  include Twitter::Autolink
+
   # Hide certain content when response is set to be cached
   # in public caches (such as e.g. Rack Cache)
   def publicly_cached?
