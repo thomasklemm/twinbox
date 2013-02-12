@@ -1,7 +1,23 @@
 // sass functions
+// Source: Sacha Greif - http://sachagreif.com/useful-sass-mixins/
 @function black($opacity)
   @return rgba(black, $opacity)
 
 @function white($opacity)
   @return rgba(white, $opacity)
-// Source: Sacha Greif - http://sachagreif.com/useful-sass-mixins/
+
+// mixins
+@mixin muted
+  color: #7f7f7f
+
+@mixin button
+  padding: 1.2rem 2.4rem
+  text-align: center
+  cursor: pointer
+  line-height: 1
+  border: 0
+  color: #eee
+  background: $primary
+  &:hover
+    background: lighten($primary, 5%)
+    color: #f9f9f9

@@ -11,7 +11,7 @@ gem 'mongoid', '~> 3.0.0'
 gem 'puma', '>= 2.0.0.b6'
 
 # Rails
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # jQuery Rails (jQuery Adapter for Rails)
 gem 'jquery-rails'
