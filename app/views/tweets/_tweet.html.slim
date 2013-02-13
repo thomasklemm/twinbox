@@ -1,7 +1,27 @@
 / tweets/_tweet
-.tweet
-  span.profile-image = tweet.author_profile_image
-  span.name = tweet.author_name
-  span.screen-name = tweet.author_screen_name
-  span.text = tweet.text
+.tweet-container
+  .tweet-inner-container
+    .tweet
+      span.profile-image = tweet.author.profile_image
+      span.name = tweet.author.name
+      span.screen-name = tweet.author.screen_name
+      span.text = tweet.text
 
+    .actions
+      - if tweet.new?
+        = tweet.open_tweet_link('Take action')
+        '  or
+        = tweet.close_tweet_link('Close')
+      - elsif tweet.open?
+        = tweet.reply_intent_link('Reply')
+        '  |
+        = tweet.retweet_intent_link('Retweet')
+        '  |
+        = tweet.close_tweet_link('Close')
+      - elsif tweet.closed?
+        = tweet.open_tweet_link('Reopen')
+
+    .events
+      - for event in tweet.events
+        .event
+          .message = event.message

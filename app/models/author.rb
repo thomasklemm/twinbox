@@ -1,6 +1,9 @@
 class Author
   include Mongoid::Document
 
+  # Embedded in tweet
+  embedded_in :tweet
+
   # Fields
   field :twitter_id,  type: Integer
   field :name,        type: String
@@ -14,7 +17,4 @@ class Author
   field :friends_count,     type: Integer, default: 0
   field :profile_image_url, type: String
   field :profile_image_url_https, type: String
-
-  # Tweet
-  embedded_in :tweet
 end

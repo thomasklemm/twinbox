@@ -1,5 +1,11 @@
 Twinbox::Application.routes.draw do
-  resources :tweets
+  resources :tweets, only: [:index, :show] do
+    member do
+      put :open  # open_issue workflow event
+      put :close # close workflow event
+    end
+  end
+
   root to: 'tweets#index'
 
   # Users

@@ -8,31 +8,58 @@ class Tweet
   field :created_at,            type: DateTime
   field :in_reply_to_status_id, type: Integer
   field :in_reply_to_user_id,   type: Integer
-  field :workflow_status,       type: String # for Workflow
 
-  # Author
+  # Embeds one author
   embeds_one :author, autobuild: true
+
+  # Embeds many events
+  embeds_many :events
 
   # Validations
   # TODO: Scope to account
   validates :twitter_id, uniqueness: true
 
+  # Scopes
+  scope :new_state,    where(workflow_state: :new)
+  scope :open_state,   where(workflow_state: :open)
+  scope :closed_state, where(workflow_state: :closed)
+
   # Workflow
-  workflow_column :workflow_status
+  # fields stores workflow state
+  field :workflow_state, type: String
+  workflow_column :workflow_state
+
+  # Define workflow with states, events and transitions
   workflow do
+    # Define states, events and transitions
+    # A tweets starts in the :new state
+    # Make states idempotent
     state :new do
-      event :needs_response, transitions_to: :awaiting_response
-      event :appreciate, transitions_to: :appreciated
+      # For some reason :open as the event name
+      # raises some open_uri errors
+      event :open_issue, transitions_to: :open # main change
+      event :close, transitions_to: :closed    # main change
     end
-    state :appreciated do
-      event :needs_response, transitions_to: :awaiting_response
+    state :open do
+      event :close, transitions_to: :closed    # main change
+      event :open_issue, transitions_to: :open # idempotent state change
     end
-    state :awaiting_response do
-      event :solve, transitions_to: :solved
+    # Tweets end in :closed state
+    state :closed do
+      event :open_issue, transitions_to: :open # main, though less expected change
+      event :close, transitions_to: :closed    # idempotent state change
     end
-    state :solved
+
+    # Define transition hooks
+    # Create an embedded event for each transition
+    on_transition do |from_state, to_state, triggering_event, *event_args|
+      events.create! do |e|
+        e.from_state = from_state
+        e.event_name = triggering_event
+        e.to_state = to_state
+      end
+    end
   end
-  # TODO: Define event creation on state changes by naming methods like events
 
   # Create one or many tweets from twitter statuses
   def self.from_twitter(*statuses)

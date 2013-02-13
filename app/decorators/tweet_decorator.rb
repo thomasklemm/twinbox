@@ -1,33 +1,33 @@
 class TweetDecorator < Draper::Decorator
+  delegate_all
   include Twitter::Autolink
 
+  # Autolink text
   def text
     auto_link(model.text).html_safe
   end
 
-  # Author
-  def author_profile_image
-    h.image_tag(author.profile_image_url, size: '48x48')
+  ##
+  # Links
+  def open_tweet_link(text)
+    h.link_to text, h.open_tweet_path(model), method: :put
   end
 
-  def author_name
-    author.name
+  def close_tweet_link(text)
+    h.link_to text, h.close_tweet_path(model), method: :put
   end
 
-  def author_screen_name
-    h.link_to "@#{ author.screen_name }", "https://twitter.com/#{ author.screen_name }"
+  def reply_intent_link(text)
+    h.link_to text, "https://twitter.com/intent/tweet?in_reply_to=#{ model.twitter_id }"
   end
 
+  def retweet_intent_link(text)
+    h.link_to text, "https://twitter.com/intent/retweet?tweet_id=#{ model.twitter_id }"
+  end
 
-  delegate_all
+  # Embedded author
+  decorates_association :author
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       source.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
-
+  # Embedded events
+  decorates_association :events
 end

@@ -1,15 +1,35 @@
 // experiments in SASS
+ul.navigation
+  list-style: none
+  li
+    display: inline
+    &:not(:last-of-type)
+      margin-right: 0.5rem
+      border-right: 2px solid #ccc
+      padding-right: 0.5rem
+    &.active
+      font-weight: 600
+
+    .current-tweet-count
+      background: black(0.12)
+      padding: 3px 6px
+      border-radius: 3px
+
 .tweets
-.tweet
-  @include span-columns(7)
+.tweet-container
+  width: 480px
   margin-bottom: 1rem
   font-size: 0.9375rem
   line-height: 1.3
+
+  .tweet-inner-container
+    margin-left: 60px
+
+.tweet
   .profile-image
-    float: left
-    margin-right: 10px
-    margin-top: 3px
-    margin-bottom: 1rem
+    display: block
+    position: absolute
+    margin-left: -60px
     img
       border-radius: 4px
   .name
@@ -20,3 +40,14 @@
     font-size: 0.875rem
   .text
     display: block
+
+.actions
+  margin: 6px 0
+  @include muted
+  a
+    text-decoration: underline
+
+
+.events
+  font-size: 0.786rem
+  @include muted

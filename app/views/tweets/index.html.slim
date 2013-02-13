@@ -1,5 +1,17 @@
 / tweets/index
-h1 tweets#index
+h1.muted style='margin-bottom: 0; line-height: 1' Twinbox
+h3.muted style='margin: 0; margin-bottom: 0.5rem' Your Twitter inbox for Business
 
-.tweets
+
+ul.navigation
+  li class=active_state(:new)    = link_to "Incoming #{ current_new_tweet_count }".html_safe,     tweets_path
+  li class=active_state(:open)   = link_to "Take action #{ current_open_tweet_count }".html_safe, tweets_path(state: :open)
+  li class=active_state(:closed) = link_to "Closed", tweets_path(state: :closed)
+
+.tweets style='margin-top: 1.25rem'
   = render partial: 'tweets/tweet', collection: @tweets
+
+  - if @tweets.empty?
+    .twinbox-zero.muted
+      h3 style='margin-bottom: 0' Twinbox Zero
+      div No #{ params[:state] } messages right now.
