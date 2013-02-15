@@ -1,5 +1,14 @@
 Twinbox::Application.routes.draw do
-  devise_for :users
+  # User authentication
+  devise_for :users,
+    path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
+
+  # Custom paths for user auth
+  devise_scope :user do
+    get 'login',     to: 'devise/sessions#new',      as: :new_user_session
+    delete 'logout', to: 'devise/sessions#destroy',  as: :destroy_user_session
+    get 'signup',    to: 'devise/registrations#new', as: :new_user_registration
+  end
 
   # Tweets
   resources :tweets, only: [:index, :show] do
@@ -23,13 +32,14 @@ Twinbox::Application.routes.draw do
     resources :accounts, only: [:new, :create]
   end
 
-  # Root
-  root to: 'tweets#index'
+  # Static Pages
+  get ':id' => 'pages#show', as: :static
 
-  # Users
-  # devise_for :users,
-  #   path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'},
-  #   path: '' # removes '/users/' path prefix
+  # Root
+  root to: 'pages#show', id: 'home'
+
+  # Fallback (Redirect to home instead of 404)
+  match '*path' => redirect('/')
 
   # Omniauth to authorize Twitter accounts
   #  There is a hidden 'auth/twitter' path too that requests can be directed to
@@ -54,13 +64,4 @@ Twinbox::Application.routes.draw do
   #   # Tweets
   #   resources :tweets
   # end
-
-  # # Static Pages
-  # get ':id' => 'high_voltage/pages#show', as: :static
-
-  # # Root
-  # root to: 'high_voltage/pages#show', id: 'landing'
-
-  # # Fallback
-  # match '*path' => redirect('/')
 end
