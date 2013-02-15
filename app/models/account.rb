@@ -2,24 +2,25 @@ class Account
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  # Users
-  # can work on project of account
-  has_many :users, dependent: :destroy
+  # Fields
+  field :name, type: String
+  validates :name, presence: true
 
-  # Admins
-  # can invite users to account
-  field :admin_ids, type: Array
-  def admins
-    users.where(id: :admin_ids)
-  end
+  # Members
+  # can work on project of account
+  has_many :members, class_name: 'User', inverse_of: :account
+
+  # after_create :make_owner_a_member
+  # def make_owner_a_member
+  #   members << owner
+  # end
 
   # Owner
   # can update billing for account
-  belongs_to :owner
+  belongs_to :owner, class_name: 'User', inverse_of: :owned_account
 
   # Project
-  has_one :project,
-    autobuild: true
+  # has_one :project, autobuild: true
 
 
 
