@@ -1,4 +1,6 @@
 Twinbox::Application.routes.draw do
+  devise_for :users
+
   # Tweets
   resources :tweets, only: [:index, :show] do
     member do

@@ -63,9 +63,10 @@ development:
 
     # User Active Support's time zone in conversions. (default: true)
     # use_activesupport_time_zone: true
+    # Thomas: Defaults to UTC
 
     # Ensure all times are UTC in the app side. (default: false)
-    use_utc: true
+    # use_utc: true
 
 test:
   sessions:
