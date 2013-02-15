@@ -5,7 +5,7 @@ ruby '1.9.3'
 
 # Mongoid (ORM for MongoDB)
 gem 'bson_ext'
-gem 'mongoid', '~> 3.0.0'
+gem 'mongoid', '~> 3.1.0'
 
 # Puma (App Server)
 gem 'puma', '>= 2.0.0.b6'

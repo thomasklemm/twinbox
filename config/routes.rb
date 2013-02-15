@@ -7,6 +7,15 @@ Twinbox::Application.routes.draw do
     end
   end
 
+  # Accounts
+  resources :accounts, only: [:index, :edit, :update, :destroy] do
+    resource :billing
+    resource :plan
+    resources :projects
+    resources :memberships, only: [:index, :edit, :update, :destroy]
+    resources :invitations, only: [:show, :update, :new, :create]
+  end
+
   # Plans
   resources :plans, only: [:index] do
     resources :accounts, only: [:new, :create]
