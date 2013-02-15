@@ -1,0 +1,9 @@
+/ accounts/edit
+
+h1 accounts#edit
+
+= form_for @account do |f|
+  = f.label :name, 'Company or organization'
+  = f.text_field :name, autocomplete: 'off'
+
+  = f.submit

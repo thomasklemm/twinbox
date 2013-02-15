@@ -18,28 +18,33 @@ Twinbox::Application.routes.draw do
     end
   end
 
-  # Accounts
-  resources :accounts, only: [:index, :edit, :update, :destroy] do
-    resource :billing
-    resource :plan
-    resources :projects
-    resources :memberships, only: [:index, :edit, :update, :destroy]
-    resources :invitations, only: [:show, :update, :new, :create]
-  end
-
-  # Plans
-  resources :plans, only: [:index] do
-    resources :accounts, only: [:new, :create]
-  end
+  # Owned account
+  # Allow account owner to modify account settings
+  resource :account, only: [:show, :edit, :update, :destroy]
 
   # Static Pages
+  # TODO: maybe restrict with some condition to only route requests
+  #       to known pages. Else 404 is rendered in production.
   get ':id' => 'pages#show', as: :static
 
   # Root
   root to: 'pages#show', id: 'home'
 
   # Fallback (Redirect to home instead of 404)
-  match '*path' => redirect('/')
+  # match '*path' => redirect('/')
+
+  # resources :accounts, only: [:index, :edit, :update, :destroy] do
+  #   resource :billing
+  #   resource :plan
+  #   resources :projects
+  #   resources :memberships, only: [:index, :edit, :update, :destroy]
+  #   resources :invitations, only: [:show, :update, :new, :create]
+  # end
+
+  # # Plans
+  # resources :plans, only: [:index] do
+  #   resources :accounts, only: [:new, :create]
+  # end
 
   # Omniauth to authorize Twitter accounts
   #  There is a hidden 'auth/twitter' path too that requests can be directed to

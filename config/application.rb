@@ -68,9 +68,18 @@ module Twinbox
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Heroku setting
-    # required for Heroku and devise
+    # Disable initalization for assets precompilation
+    # Required to be false for deployment to Heroku
+    # Recommended by Devise generators
+    # Heroku: https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar#troubleshooting
     config.assets.initialize_on_precompile = false
-    # Source: https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar#troubleshooting
+
+    # Disable generation of helpers, javascripts, and view specs
+    # Thoughtbot: http://robots.thoughtbot.com/post/34229167067/reduce-application-clutter-disable-unwanted-rails
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+    end
   end
 end
