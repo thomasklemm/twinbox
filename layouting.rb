@@ -67,7 +67,7 @@ class Plan
   end
 end
 
-def Project
+class Project
   include Mongoid::Document
   include Mongoid::Timestamps
 

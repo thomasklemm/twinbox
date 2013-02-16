@@ -2,32 +2,36 @@ class Plan
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_many :accounts
-  has_many :limits
-
   field :name, type: String
   field :price, type: Integer, default: 0
+  field :user_limit, type: Integer, default: 0
   field :trial, type: Boolean, default: false
 
-  validates :name, :price, presence: true
+  validates :name, :price, :user_limit, presence: true
 
-  index({ name: 1 } , { background: true })
+  # Accounts
+  has_many :accounts
 
-  # Class
-  scope :ordered, desc(:price)
+  def self.ordered
+    desc(:price)
+  end
 
-  def self.paid_by_price
-    paid.ordered
+  def self.paid
+    where(:price.gt => 0)
+  end
+
+  def self.free
+    where(:price => 0)
   end
 
   def self.trial
-    free.first
+    where(trial: true).first
   end
 
-  scope :paid, where(:price.gt => 0)
-  scope :free, where(price: 0)
+  def self.trial_length
+    42
+  end
 
-  # Instance
   def free?
     price.zero?
   end
@@ -36,15 +40,13 @@ class Plan
     !free?
   end
 
-  def can_add_more?(limit, amount)
-    limits.numbered.named(limit).value > amount
+  def trial?
+    !!trial
   end
 
-  def allows?(limit)
-    limits.boolean.named(limit).allowed?
+  def can_add_more_users?(amount)
+    amount <= user_limit
   end
 
-  def limit(limit_name)
-    limits.named(limit_name)
-  end
+  index({ name: 1 }, { background: true })
 end

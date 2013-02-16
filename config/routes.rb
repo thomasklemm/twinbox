@@ -1,4 +1,8 @@
 Twinbox::Application.routes.draw do
+  get "twitter_accounts/index"
+
+  get "twitter_accounts/show"
+
   # User authentication
   devise_for :users,
     path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
@@ -10,6 +14,12 @@ Twinbox::Application.routes.draw do
     get 'signup',    to: 'devise/registrations#new', as: :new_user_registration
   end
 
+  # Omniauth to authorize Twitter accounts
+  #  There is a hidden 'auth/twitter' path too that requests can be directed to
+  #  when trying to authorize a Twitter account with this application
+  match 'auth/twitter/callback' => 'omniauth#twitter'
+  match 'auth/failure'          => 'omniauth#failure'
+
   # Tweets
   resources :tweets, only: [:index, :show] do
     member do
@@ -20,7 +30,14 @@ Twinbox::Application.routes.draw do
 
   # Owned account
   # Allow account owner to modify account settings
-  resource :account, only: [:show, :edit, :update, :destroy]
+  resource :account, only: [:show, :edit, :update, :destroy] do
+    resource :plan # TODO: Restrict actions
+  end
+
+  # Project for each account member
+  resource :project, only: :show do
+    resources :twitter_accounts, only: [:index, :show, :new]
+  end
 
   # Static Pages
   # TODO: maybe restrict with some condition to only route requests
@@ -41,16 +58,6 @@ Twinbox::Application.routes.draw do
   #   resources :invitations, only: [:show, :update, :new, :create]
   # end
 
-  # # Plans
-  # resources :plans, only: [:index] do
-  #   resources :accounts, only: [:new, :create]
-  # end
-
-  # Omniauth to authorize Twitter accounts
-  #  There is a hidden 'auth/twitter' path too that requests can be directed to
-  #  when trying to authorize a Twitter account with this application
-  # match 'auth/twitter/callback' => 'omniauth#twitter'
-  # match 'auth/failure'          => 'omniauth#failure'
 
   # # Settings
   # scope 'settings' do

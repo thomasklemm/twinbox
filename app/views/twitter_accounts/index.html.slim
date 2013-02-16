@@ -1,0 +1,25 @@
+/ twitter_accounts/index
+
+h1 TwitterAccounts#index
+p Find me in app/views/twitter_accounts/index.html.slim
+
+div: b Authorized accounts
+
+div Authorized accounts:
+- for t in @twitter_accounts
+  div = link_to t.screen_name, project_twitter_account_path(t)
+
+div
+  b Add a Twitter account
+  br
+  span or reauthorize one with different permissions
+
+= link_to 'Add an account (Read)', new_project_twitter_account_path(scope: :read)
+br
+= link_to 'Add an account (Read and write)', new_project_twitter_account_path(scope: :write)
+br
+= link_to 'Add an account (Read, write and direct messages)', new_project_twitter_account_path(scope: :messages)
+
+br
+b Session:&nbsp;
+span = user_session[:twitter_auth_scope]

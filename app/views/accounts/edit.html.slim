@@ -2,7 +2,7 @@
 
 h1 accounts#edit
 
-= form_for @account do |f|
+= form_for @owned_account do |f|
   = f.label :name, 'Company or organization'
   = f.text_field :name, autocomplete: 'off'
 

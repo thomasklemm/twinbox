@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_current_account
+  before_filter :ensure_current_owned_account
 
   # GET /account
   def show
@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
 
   # PUT /account
   def update
-    if @account.update_attributes(params[:account])
+    if @owned_account.update_attributes(params[:account])
       flash[:success] = 'Account updated.'
       redirect_to account_path
     else
@@ -23,22 +23,6 @@ class AccountsController < ApplicationController
   # DELETE /account
   def destroy
     raise 'Account destruction is not implemented.'
-  end
-
-  private
-
-  def ensure_current_account
-    @account ||= current_account
-    raise 'Not authorized' unless @account.present? # TODO: How else can authorization be ensured?
-  end
-
-  # Access only to owned account for account owner
-  def current_account
-    current_user.owned_account
-  end
-
-  def current_account?
-    current_account.present?
   end
 end
 
