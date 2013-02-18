@@ -77,4 +77,12 @@ class TwitterAccount
   def to_param
     screen_name
   end
+
+  # Instantiate a new Twitter::Client with the account's credentials
+  def twitter_client
+    @client ||= Twitter::Client.new(
+      oauth_token: token,
+      oauth_token_secret: token_secret
+    )
+  end
 end

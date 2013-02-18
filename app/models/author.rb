@@ -16,5 +16,4 @@ class Author
   field :followers_count,   type: Integer, default: 0
   field :friends_count,     type: Integer, default: 0
   field :profile_image_url, type: String
-  field :profile_image_url_https, type: String
 end

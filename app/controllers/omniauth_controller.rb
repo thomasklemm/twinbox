@@ -4,8 +4,8 @@ class OmniauthController < ApplicationController
   # Handle the omniauth callback from Twitter
   def twitter
     auth = request.env['omniauth.auth']
-    auth_scope = user_session.delete(:twitter_auth_scope)
     project = current_user.account.project
+    auth_scope = user_session.delete(:twitter_auth_scope)
 
     # Create or update twitter account
     twitter_account = TwitterAccount.from_omniauth(auth, project, auth_scope)
@@ -16,6 +16,8 @@ class OmniauthController < ApplicationController
 
   # Handle failed omniauth authorization requests
   def failure
+    user_session.delete(:twitter_auth_scope)
+
     flash.alert = 'Failed to authorize Twitter account.'
     redirect_to project_twitter_accounts_path
   end

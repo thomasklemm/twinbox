@@ -11,4 +11,13 @@ class Project
   # Twitter accounts
   has_many :twitter_accounts
 
+  def twitter_client
+    twitter_accounts.sample.twitter_client
+  end
+
+  # Conversations
+  has_many :conversations
+
+  # Tweets
+  has_many :tweets
 end
