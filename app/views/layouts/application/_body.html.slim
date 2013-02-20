@@ -1,7 +1,7 @@
-/ layouts/_sales_body
+/ layouts/_body
 #root
-  / navigation on sales pages
-  = render 'sales_navigation'
+  / primary navigation
+  = render 'primary_navigation'
 
   / any flash messages
   = render 'flash_messages'
@@ -16,6 +16,4 @@
 #footer
   = render 'footer'
 
-/ async javascript snippets at the end of the body
-/ to improve overall load times
-= render 'inline_javascripts/body'
+

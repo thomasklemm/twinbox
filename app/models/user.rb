@@ -7,10 +7,10 @@ class User
   validates :name, presence: true
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable and :omniauthable
+  # :token_authenticatable, :omniauthable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :timeoutable
+         :lockable
 
   # Database authenticatable
   # Devise seems to validate the presence of the email and password fields itself

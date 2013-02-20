@@ -1,0 +1,14 @@
+/ layouts/sales/_body
+#root
+  = render 'sales/topbar'
+  = render 'flash_messages'
+
+  / main content
+  #content.container
+    = yield
+
+  / sticky footer that stays at the bottom of the page
+  #root_footer
+
+#footer
+  = render 'sales/footer'

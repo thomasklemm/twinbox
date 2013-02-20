@@ -1,4 +1,4 @@
-/ layouts/_head
+/ layouts/sales/_head
 meta charset='utf-8'
 
 / dns prefetch
@@ -21,12 +21,6 @@ meta name='keywords' content=''
 / TODO: exclude certain paths (like tos etc.) from indexing
 / using robots.txt
 
-/ favicon
-/ IE uses favicon.ico in root
-/ Browsers use favicon.png
-/ iOS and Android look for filenames
-/ link rel='icon' href=image_path('favicon/favicon.png') type='image/png'
-
 / author credits in humans.txt
 / link rel='author' href='/humans.txt'
 
@@ -39,7 +33,7 @@ meta name='keywords' content=''
 /   twitter web intents
 = javascript_include_tag '//platform.twitter.com/widgets.js'
 /   inline javascript in head
-= render 'inline_javascripts/head'
+= render 'inline_javascripts_in_head'
 /   my minified javascripts and libraries
 = javascript_include_tag 'application'
 

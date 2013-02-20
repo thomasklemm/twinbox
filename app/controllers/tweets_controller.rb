@@ -15,14 +15,14 @@ class TweetsController < ApplicationController
 
   # PUT /tweets/:id/open
   def open
-    @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find_by(twitter_id: params[:id])
     @tweet.open_issue!
     redirect_to :back
   end
 
   # PUT /tweets/:id/close
   def close
-    @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find_by(twitter_id: params[:id])
     @tweet.close!
     redirect_to :back
   end

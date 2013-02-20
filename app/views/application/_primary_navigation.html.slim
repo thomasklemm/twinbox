@@ -6,4 +6,4 @@ application/_primary_navigation
       li = current_user.name
       - if current_user.has_owned_account?
         li = link_to 'Account', account_path
-      li = link_to 'Logout', destroy_user_session_path
+      li = link_to 'Logout', destroy_user_session_path, method: :delete

@@ -81,5 +81,15 @@ module Twinbox
       generate.assets false
       generate.view_specs false
     end
+
+    # Devise layouts
+    # default is "devise"
+    config.to_prepare do
+      Devise::SessionsController.layout      proc{ |controller| user_signed_in? ? "application" : "sales" }
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "sales" }
+      Devise::ConfirmationsController.layout proc{ |controller| user_signed_in? ? "application" : "sales" }
+      Devise::UnlocksController.layout       proc{ |controller| user_signed_in? ? "application" : "sales" }
+      Devise::PasswordsController.layout     proc{ |controller| user_signed_in? ? "application" : "sales" }
+    end
   end
 end

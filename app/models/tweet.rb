@@ -74,7 +74,7 @@ class Tweet
   # Create one or many tweets from twitter statuses
   def self.from_twitter(project, statuses, options={})
     statuses &&= [statuses].flatten.reverse
-    source = options[:source]
+    source = options.fetch(:source) # raises KeyError if not present
 
     statuses.each do |status|
       tweet = project.tweets.find_or_create_by(twitter_id: status.id) do |t|
@@ -113,7 +113,7 @@ class Tweet
     case source
       when :mentions_timeline
         # Initial state 'new'
-      when :home_timeline
+      when :user_timeline
         self.workflow_state = 'history'
       when :build_conversation_history
         self.workflow_state = 'history'
@@ -152,9 +152,8 @@ class Tweet
     previous_tweet
   end
 
-  def with_conversation
-    conversation.tweets.sort_by(&:created_at)
+  def to_param
+    twitter_id
   end
-
 end
 

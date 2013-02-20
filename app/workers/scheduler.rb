@@ -3,14 +3,15 @@ class Scheduler
 
   def perform
     # Retrieve timelines for each twitter account
-    retrieve_home_timelines
-    retrieve_mention_timelines
+    retrieve_user_timelines
+    retrieve_mentions_timelines
   end
 
-  def retrieve_home_timelines
+  # The user timeline carries all tweets that the authenticating user has sent
+  def retrieve_user_timelines
     TwitterAccount.all.each do |t|
-      tweets = t.twitter_client.home_timeline
-      Tweet.from_twitter(t.project, tweets, source: :home_timeline)
+      tweets = t.twitter_client.user_timeline
+      Tweet.from_twitter(t.project, tweets, source: :user_timeline)
     end
   end
 
