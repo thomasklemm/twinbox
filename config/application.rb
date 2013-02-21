@@ -76,10 +76,12 @@ module Twinbox
 
     # Disable generation of helpers, javascripts, and view specs
     # Thoughtbot: http://robots.thoughtbot.com/post/34229167067/reduce-application-clutter-disable-unwanted-rails
-    config.generators do |generate|
-      generate.helper false
-      generate.assets false
-      generate.view_specs false
+    config.generators do |g|
+      g.helper      false
+      g.stylesheets false
+      g.javascripts false
+      g.test_framework      :test_unit, fixture_replacement: :fabrication
+      g.fixture_replacement :fabrication, dir: "test/fabricators"
     end
 
     # Devise layouts

@@ -116,3 +116,14 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+group :development, :test do
+  # Minitest (not sure if nescessary here)
+  gem 'minitest'
+
+  # Fabrication (Fixture replacement)
+  gem 'fabrication'
+
+  # TConsole (Testing console)
+  gem 'tconsole', '>= 1.3.0.pre2'
+end

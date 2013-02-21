@@ -49,7 +49,7 @@ class User
   # Owned account, the one that the user created and oversees
   has_one :owned_account, class_name: 'Account', inverse_of: :owner
   accepts_nested_attributes_for :owned_account
-  validates_associated :owned_account
+  # validates_associated :owned_account
   validates :owned_account, presence: true
 
   # Build owned account unless there is already an account or owned account associated
