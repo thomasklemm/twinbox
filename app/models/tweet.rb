@@ -72,9 +72,10 @@ class Tweet
   end
 
   # Create one or many tweets from twitter statuses
-  def self.from_twitter(project, statuses, options={})
+  def self.from_twitter(statuses, opts={})
     statuses &&= [statuses].flatten.reverse
-    source = options.fetch(:source) # raises KeyError if not present
+    project = opts.fetch(:project)
+    source  = opts.fetch(:source)
 
     statuses.each do |status|
       tweet = project.tweets.find_or_create_by(twitter_id: status.id) do |t|

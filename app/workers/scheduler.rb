@@ -11,14 +11,14 @@ class Scheduler
   def retrieve_user_timelines
     TwitterAccount.all.each do |t|
       tweets = t.twitter_client.user_timeline
-      Tweet.from_twitter(t.project, tweets, source: :user_timeline)
+      Tweet.from_twitter(tweets, project: t.project, source: :user_timeline)
     end
   end
 
   def retrieve_mentions_timelines
     TwitterAccount.all.each do |t|
       tweets = t.twitter_client.mentions_timeline
-      Tweet.from_twitter(t.project, tweets, source: :mentions_timeline)
+      Tweet.from_twitter(tweets, project: t.project, source: :mentions_timeline)
     end
   end
 end
